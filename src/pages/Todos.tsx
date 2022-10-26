@@ -35,7 +35,6 @@ const Todos = () => {
       // pobieram dane z API za pomocą biblioteki axios, metodą (http) get i podaję adres API z numerem strony pobranym z localStorage (jeśli nie ma to ustawiony jest na 1) dzięki temu po odświeżeniu strony nie zaczynamy od początku tylko od ostatniej strony na której byliśmy
       .then((response) => {
         // jeśli dane zostały pobrane pomyślnie to wykonuję poniższe instrukcje
-        console.log(response.data.data);
         setPageNumber(response.data.meta.pagination.pages);
         //  pobieram z danych z API ilość wszystkich stron i ustawiam ją jako ilość stron w paginacji
         setTodos(response.data.data);
@@ -46,7 +45,7 @@ const Todos = () => {
       })
       .catch((error) => {
         // jeśli wystąpi błąd to wyświetlam go w konsoli
-        console.log(error);
+        // console.log(error);
         // wyświetlam błąd w konsoli
       });
   }, [actualPage]);
@@ -56,7 +55,6 @@ const Todos = () => {
     // selected to numer strony na którą klikniemy i jest typu number
     setActualPage(selected + 1);
     // ustawiam state actualPage na numer strony pobrany z obiektu selected i dodaję 1 ponieważ numeracja stron w API zaczyna się od 1 a nie od 0
-    console.log(selected + 1);
 
     localStorage.setItem('todo', JSON.stringify(selected + 1));
     // zapisuje do localStorage numer strony na której jestem, kluczem jest todo, a wartością numer strony

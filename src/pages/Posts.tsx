@@ -61,7 +61,6 @@ const Posts = () => {
       )
       .then((response) => {
         // jeśli dane zostały pobrane pomyślnie to wykonuję poniższe instrukcje
-        console.log('posts', response.data.data);
         setPageNumber(response.data.meta.pagination.pages);
         //  pobieram z danych z API ilość wszystkich stron i ustawiam ją jako ilość stron w paginacji
         setPosts(response.data.data);
@@ -69,7 +68,7 @@ const Posts = () => {
       })
       .catch((error) => {
         // jeśli wystąpi błąd to wykonuję poniższe instrukcje
-        console.log(error);
+        // console.log(error);
         // wyświetlam błąd w konsoli
       });
 
@@ -77,7 +76,6 @@ const Posts = () => {
       .get(`https://gorest.co.in/public/v1/comments?page=${actualPage}`)
       // pobieram z API komentarze do postów
       .then((response) => {
-        console.log('comments', response.data.data);
         setComments(response.data.data);
         // ustawiam state comments na dane z API
       })
@@ -89,12 +87,9 @@ const Posts = () => {
 
   const changePage = ({ selected }: { selected: number }) => {
     // selected to numer strony na którą klikniemy i jest typu number
-    console.log(selected);
-    console.log(selected + 1);
     // tworze funkcje changePage która przyjmuje obiekt selected typu number
     setActualPage(selected + 1);
     // ustawiam state actualPage na numer strony pobrany z obiektu selected i dodaję 1 ponieważ numeracja stron w API zaczyna się od 1 a nie od 0
-    // console.log(selected + 1);
 
     localStorage.setItem('post', JSON.stringify(selected + 1));
     // zapisuje do localStorage numer strony na której jestem, kluczem jest post, a wartością numer strony
@@ -133,7 +128,6 @@ const Posts = () => {
       )
       .then((response) => {
         // jeśli dane zostały wysłane pomyślnie to wykonuję poniższe instrukcje
-        console.log(response);
         setTitle('');
         // ustawiam state title na pusty string ponieważ po wysłaniu posta chcę żeby pole title było puste
         setBody('');
@@ -141,7 +135,7 @@ const Posts = () => {
       })
       .catch((error) => {
         // jeśli wystąpi błąd to wykonuję poniższe instrukcje
-        console.log(error);
+        // console.log(error);
         // wyświetlam błąd w konsoli
       });
   };

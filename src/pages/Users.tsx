@@ -60,7 +60,6 @@ const Users = () => {
       })
       .then((response) => {
         // jeśli dane zostały pobrane pomyślnie to wykonuję poniższe instrukcje
-        console.log(response);
         // pobieram z danych z API ilość wszystkich elementów
         setPageNumber(response.data.meta.pagination.pages);
         //  pobieram z danych z API ilość wszystkich stron i ustawiam ją jako ilość stron w paginacji
@@ -73,7 +72,7 @@ const Users = () => {
       })
       .catch((error) => {
         // jeśli wystąpi błąd to wykonuję poniższe instrukcje
-        console.log(error);
+        // console.log(error);
         // wyświetlam błąd w konsoli
       });
   }, [actualPage, name]);
@@ -81,11 +80,9 @@ const Users = () => {
 
   const changePage = ({ selected }: { selected: number }) => {
     // selected to numer strony na którą klikniemy i jest typu number
-    console.log(selected + 1);
 
     setActualPage(selected + 1);
     // ustawiam state actualPage na numer strony pobrany z obiektu selected i dodaję 1 ponieważ numeracja stron w API zaczyna się od 1 a nie od 0
-    console.log(selected + 1);
 
     localStorage.setItem('page', JSON.stringify(selected + 1));
     // zapisuje do localStorage numer strony na której jestem, kluczem jest post, a wartością numer strony
@@ -137,7 +134,6 @@ const Users = () => {
       )
       .then((response) => {
         // jeśli dane zostały wysłane pomyślnie to wykonuję poniższe instrukcje
-        console.log(response);
         setName('');
         // ustawiam state name na pusty string poniewaz po wysłaniu danych chcę aby pole name było puste
         setEmail('');
@@ -149,7 +145,7 @@ const Users = () => {
       })
       .catch((error) => {
         // jeśli wystąpi błąd to wykonuję poniższe instrukcje
-        console.log(error);
+        // console.log(error);
         // wyświetlam błąd w konsoli
       });
   };
