@@ -53,8 +53,6 @@ const Users = () => {
           'Content-Type': 'application/json',
           // ustawiam typ danych na json
 
-          'Access-Control-Allow-Origin': '*',
-
           Authorization:
             'Bearer 1533f5328041264a1747ee4d995d1ffca1379aefb195c0fa7ee3f34b9d46b5f5',
           // ustawiam token autoryzacyjny który jest wymagany do pobrania danych z API poniewaz jest to API wykorzystujace wygenerowany token
