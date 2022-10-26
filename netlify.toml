@@ -1,0 +1,4 @@
+[[headers]]
+ for = "/transparent/code/*"
+    [headers.values]    
+    Access-Control-Allow-Origin = "*"

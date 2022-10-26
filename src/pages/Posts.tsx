@@ -48,8 +48,6 @@ const Posts = () => {
         `https://gorest.co.in/public/v1/posts?page=${actualPage}`,
         // pobieram dane z API za pomocą biblioteki axios, metodą (http) get i podaję adres API z numerem strony pobranym z localStorage (jeśli nie ma to ustawiony jest na 1) dzięki temu po odświeżeniu strony nie zaczynamy od początku tylko od ostatniej strony na której byliśmy
         {
-          withCredentials: true,
-
           headers: {
             // dodaję nagłówki do zapytania
             Accept: 'application/json',
@@ -75,9 +73,7 @@ const Posts = () => {
       });
 
     axios
-      .get(`https://gorest.co.in/public/v1/comments?page=${actualPage}`, {
-        withCredentials: true,
-      })
+      .get(`https://gorest.co.in/public/v1/comments?page=${actualPage}`)
       // pobieram z API komentarze do postów
       .then((response) => {
         setComments(response.data.data);
