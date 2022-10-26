@@ -1,0 +1,74 @@
+@import './variables.scss';
+
+@mixin centerElementHorizontally() {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin centerElementColumn($align) {
+    display: flex;
+    justify-content: center;
+    align-items: $align;
+    flex-direction: column;
+}
+
+.container {
+    padding: 20px 0px;
+
+    .wrapper {
+        @include centerElementHorizontally();
+
+        list-style: none;
+
+        @media (max-width: 425px) {
+            display: none;
+        }
+
+        .navItem {
+            color: $textColor;
+            text-decoration: none;
+            margin: 0px 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.15s;
+
+
+            &:hover {
+                color: $navigationItemsHoverColor;
+                transition: 0.15s;
+            }
+        }
+
+    }
+
+    .menuIcon {
+        display: none;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: $textColor;
+
+        @media (max-width: 425px) {
+            display: block;
+            position: absolute;
+            right: 25px;
+        }
+    }
+
+    .showWrapper {
+        display: none;
+        padding: 30px 0px 10px 0px;
+        list-style: none;
+
+        @media (max-width: 425px) {
+            display: block;
+
+            @include centerElementColumn(center);
+        }
+
+        .showNavItem {
+            color: $textColor;
+            text-decoration: none;
+        }
+    }
+}

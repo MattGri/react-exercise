@@ -1,0 +1,144 @@
+@import './variables.scss';
+
+@mixin centerElementHorizontally() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperForm {
+    margin: 0 auto;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+
+    .information {
+        margin: 0 auto;
+        background-color: $inputBackground;
+        border-radius: 5px;
+        padding: 10px;
+        color: $inputColor;
+        width: 50%;
+        margin-bottom: 10px;
+        border: none;
+
+
+        &::placeholder {
+            color: $inputPlaceholderColor;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    .submit {
+        margin: 0 auto;
+        background-color: $submitColor;
+        border-radius: 5px;
+        padding: 10px;
+        color: $textColor;
+        width: 50%;
+        margin-bottom: 10px;
+        border: none;
+        cursor: pointer;
+        transition: 0.15s;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background-color: $submitHoverColor;
+            transition: 0.15s;
+        }
+
+    }
+}
+
+.wrapperParent {
+    list-style: none;
+    margin: 0px auto;
+
+    .item {
+        margin: 10px auto;
+        color: $textColor;
+        padding: 10px;
+        width: 50%;
+        border-radius: 10px;
+        background-color: $apiItemsBackground;
+
+        @media (max-width: 768px) {
+            font-size: 13px;
+        }
+
+        @media (max-width: 425px) {
+            font-size: 11px;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 9px;
+        }
+
+        .itemTitle {
+            @media (max-width: 320px) {
+                font-size: 12px;
+            }
+        }
+
+        .itemInformation {
+            @media (max-width: 320px) {
+                font-size: 7px;
+            }
+        }
+    }
+
+}
+
+.pagination {
+    list-style: none;
+    color: $paginationContainer;
+
+    @include centerElementHorizontally();
+    font-size: 22px;
+    margin: 20px 0px;
+    gap: 5px;
+
+    .page-num {
+        padding: 8px 15px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-weight: 400;
+        border: 1px solid $blackColor;
+        background-color: $pageNumberBackground;
+        transition: 0.15s;
+
+        &:hover {
+            background-color: $pageNumberHoverBackground;
+            transition: 0.15s;
+        }
+
+        @media (max-width: 768px) {
+            padding: 8px 5px;
+        }
+
+        @media (max-width: 425px) {
+            font-size: 13px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 10px;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 13px;
+        }
+    }
+
+    .active {
+        color: $textColor;
+    }
+
+
+}
