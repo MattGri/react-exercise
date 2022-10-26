@@ -43,27 +43,64 @@ const Posts = () => {
     document.title = 'Posts';
     // ustawiam tytuł strony na Posts
 
-    axios
-      .get(
-        `https://gorest.co.in/public/v1/posts?page=${actualPage}`,
-        // pobieram dane z API za pomocą biblioteki axios, metodą (http) get i podaję adres API z numerem strony pobranym z localStorage (jeśli nie ma to ustawiony jest na 1) dzięki temu po odświeżeniu strony nie zaczynamy od początku tylko od ostatniej strony na której byliśmy
-        {
-          headers: {
-            // dodaję nagłówki do zapytania
-            Accept: 'application/json',
-            // ustawiam typ danych na json
-            'Content-Type': 'application/json',
-            Authorization:
-              'Bearer 1533f5328041264a1747ee4d995d1ffca1379aefb195c0fa7ee3f34b9d46b5f5',
-            // ustawiam token autoryzacyjny który jest wymagany do pobrania danych z API poniewaz jest to API wykorzystujace wygenerowany token
-          },
-        }
-      )
+    // axios
+    //   .get(
+    //     `https://gorest.co.in/public/v1/posts?page=${actualPage}`,
+    //     // pobieram dane z API za pomocą biblioteki axios, metodą (http) get i podaję adres API z numerem strony pobranym z localStorage (jeśli nie ma to ustawiony jest na 1) dzięki temu po odświeżeniu strony nie zaczynamy od początku tylko od ostatniej strony na której byliśmy
+    //     {
+    //       headers: {
+    //         // dodaję nagłówki do zapytania
+    //         Accept: 'application/json',
+    //         // ustawiam typ danych na json
+    //         'Content-Type': 'application/json',
+    //         Authorization:
+    //           'Bearer 1533f5328041264a1747ee4d995d1ffca1379aefb195c0fa7ee3f34b9d46b5f5',
+    //         // ustawiam token autoryzacyjny który jest wymagany do pobrania danych z API poniewaz jest to API wykorzystujace wygenerowany token
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     // jeśli dane zostały pobrane pomyślnie to wykonuję poniższe instrukcje
+    //     setPageNumber(response.data.meta.pagination.pages);
+    //     //  pobieram z danych z API ilość wszystkich stron i ustawiam ją jako ilość stron w paginacji
+    //     setPosts(response.data.data);
+    //     // ustawiam state posts na pobrane dane z API
+    //   })
+    //   .catch((error) => {
+    //     // jeśli wystąpi błąd to wykonuję poniższe instrukcje
+    //     // console.log(error);
+    //     // wyświetlam błąd w konsoli
+    //   });
+
+    // axios
+    //   .get(`https://gorest.co.in/public/v1/comments?page=${actualPage}`)
+    //   // pobieram z API komentarze do postów
+    //   .then((response) => {
+    //     setComments(response.data.data);
+    //     // ustawiam state comments na dane z API
+    //   })
+    //   .catch((error) => {
+    //     // console.log(error);
+    //   });
+
+    fetch(`https://gorest.co.in/public/v1/posts?page=${actualPage}`, {
+      // pobieram dane z API za pomocą biblioteki axios, metodą (http) get i podaję adres API z numerem strony pobranym z localStorage (jeśli nie ma to ustawiony jest na 1) dzięki temu po odświeżeniu strony nie zaczynamy od początku tylko od ostatniej strony na której byliśmy
+      headers: {
+        // dodaję nagłówki do zapytania
+        Accept: 'application/json',
+        // ustawiam typ danych na json
+        'Content-Type': 'application/json',
+        Authorization:
+          'Bearer 1533f5328041264a1747ee4d995d1ffca1379aefb195c0fa7ee3f34b9d46b5f5',
+        // ustawiam token autoryzacyjny który jest wymagany do pobrania danych z API poniewaz jest to API wykorzystujace wygenerowany token
+      },
+    })
+      .then((response) => response.json())
       .then((response) => {
         // jeśli dane zostały pobrane pomyślnie to wykonuję poniższe instrukcje
-        setPageNumber(response.data.meta.pagination.pages);
+        setPageNumber(response.meta.pagination.pages);
         //  pobieram z danych z API ilość wszystkich stron i ustawiam ją jako ilość stron w paginacji
-        setPosts(response.data.data);
+        setPosts(response.data);
         // ustawiam state posts na pobrane dane z API
       })
       .catch((error) => {
@@ -72,11 +109,11 @@ const Posts = () => {
         // wyświetlam błąd w konsoli
       });
 
-    axios
-      .get(`https://gorest.co.in/public/v1/comments?page=${actualPage}`)
+    fetch(`https://gorest.co.in/public/v1/comments?page=${actualPage}`)
       // pobieram z API komentarze do postów
+      .then((response) => response.json())
       .then((response) => {
-        setComments(response.data.data);
+        setComments(response.data);
         // ustawiam state comments na dane z API
       })
       .catch((error) => {
