@@ -17,6 +17,6 @@ Project which fetches from API and displays data on 3 subpages (posts, todos, us
  If you have any issues, please let me know on mateusz.grzybowski98@gmail.com
  
  # Live 📍
-https://poetic-rolypoly-f9f22f.netlify.app/
+https://fancy-chimera-f235d1.netlify.app/users
 
 
